@@ -1,19 +1,37 @@
 <div class="main-container">
-  <h1>Consulta si te sale factible abonar hoy y vender hoy tu café</h1>
+  <h1 class="hero-title">¿Hoy es buen día para abonar?</h1>
+  <p class="hero-subtitle">Consulte el clima y el precio del café antes de salir al campo.</p>
 
   <div class="cards-container">
-    <div class="card clima" *ngIf="clima">
-      <h3>Probabilidad de Lluvia</h3>
-      <p class="valor">{{ clima.probabilidad }}%</p>
+
+    <div class="card" *ngIf="clima">
+      <span class="card-badge" [class.badge-lluvia]="clima.probabilidad > 50" [class.badge-ok]="clima.probabilidad <= 50">
+        {{ clima.probabilidad > 50 ? 'Lluvia probable' : 'Cielo despejado' }}
+      </span>
+      <h3>Probabilidad de Lluvia — {{ clima.nombre }}</h3>
+      <span class="valor">{{ clima.probabilidad }}%</span>
       <p style="text-transform: capitalize;">{{ clima.descripcion }}</p>
       <hr>
       <p><strong>{{ clima.mensaje }}</strong></p>
     </div>
 
-    <div class="card cafe">
-      <h3>Precio Café (Libra)</h3>
-      <p class="valor">{{ precioCafe }}</p>
-      <p>Bolsa de Nueva York → COP</p>
+    <div class="card" *ngIf="!clima && !errorClima">
+      <h3>Probabilidad de Lluvia</h3>
+      <span class="valor">...</span>
+      <p>Cargando datos del clima</p>
     </div>
+
+    <div class="card card-error" *ngIf="errorClima">
+      <h3>Probabilidad de Lluvia</h3>
+      <p class="error-msg">{{ errorClima }}</p>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-ok">Precio hoy</span>
+      <h3>Precio Café (Libra)</h3>
+      <span class="valor">{{ precioCafe }}</span>
+      <p>Bolsa de Nueva York &rarr; COP</p>
+    </div>
+
   </div>
 </div>

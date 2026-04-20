@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Colores primarios */
+  --cafe-oscuro:    #3E2723;
+  --verde-cosecha:  #2E7D32;
+  --crema:          #FDF6EC;
+
+  /* Colores secundarios */
+  --cafe-medio:     #6D4C41;
+  --ambar-cereza:   #F9A825;
+  --rojo-lluvia:    #C62828;
+
+  /* Colores neutros */
+  --texto-principal:   #1A1A1A;
+  --texto-secundario:  #616161;
+  --blanco:            #FFFFFF;
+  --separador:         #E0D6CC;
+
+  /* Tipografía */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-ui:      'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Espaciado */
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  32px;
+  --space-xl:  48px;
+  --space-2xl: 64px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--crema);
+  color: var(--texto-principal);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  color: var(--cafe-oscuro);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+a {
+  color: var(--cafe-oscuro);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cafe-medio);
+}

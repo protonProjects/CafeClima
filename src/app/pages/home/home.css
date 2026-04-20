@@ -1,49 +1,121 @@
-/* Este es el contenedor que envuelve todo */
 .main-container {
   display: flex;
-  flex-direction: column; /* Alinea los elementos de arriba hacia abajo */
-  justify-content: center; /* Centra verticalmente */
-  align-items: center;     /* Centra horizontalmente */
-  min-height: 100vh;       /* Ocupa el 100% de la altura de la pantalla */
-  margin: 0;
-  background-color: #fcfaf8; /* Un color crema muy cafetero */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: var(--space-2xl) var(--space-lg);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* El título principal */
-h1 {
-  margin-bottom: 40px;
-  color: #3e2723; /* Marrón oscuro */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cafe-oscuro);
   text-align: center;
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
 }
 
-/* Contenedor específico para que las tarjetas salgan una al lado de la otra */
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--texto-secundario);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
 .cards-container {
   display: flex;
   justify-content: center;
-  gap: 25px; /* Espacio entre la tarjeta de clima y café */
-  flex-wrap: wrap; /* Si la pantalla es pequeña (celular), se ponen una abajo de otra */
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-/* Estilo de las tarjetas */
 .card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  width: 300px;
+  background: var(--blanco);
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.08);
+  width: 320px;
   text-align: center;
-  border-bottom: 8px solid #6f4e37; /* Detalle café en la base */
-  transition: transform 0.3s ease;
+  border-bottom: 6px solid var(--cafe-medio);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Efecto de levante al pasar el mouse */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.14);
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--texto-principal);
+  margin-bottom: var(--space-sm);
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: var(--texto-secundario);
+}
+
+.card hr {
+  border: none;
+  border-top: 1px solid var(--separador);
+  margin: var(--space-sm) 0;
+}
+
+.card strong {
+  color: var(--texto-principal);
+  font-weight: 600;
+}
+
+.card-error {
+  border-bottom-color: var(--rojo-lluvia);
+}
+
+.error-msg {
+  color: var(--rojo-lluvia) !important;
+  font-size: 0.9rem !important;
+  margin-top: var(--space-sm);
 }
 
 .valor {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin: 15px 0;
-  color: #2e7d32; /* Un verde oscuro para los números */
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--verde-cosecha);
+  margin: var(--space-sm) 0;
+  display: block;
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: var(--space-sm);
+}
+
+.badge-lluvia {
+  background-color: #FFEBEE;
+  color: var(--rojo-lluvia);
+}
+
+.badge-ok {
+  background-color: #E8F5E9;
+  color: var(--verde-cosecha);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .main-container {
+    padding: var(--space-xl) var(--space-sm);
+  }
 }

@@ -1,40 +1,42 @@
 # CaféClima
 
-Aplicación web para caficultores colombianos que consultan la probabilidad de lluvia y el precio del café antes de tomar decisiones en el campo.
+App para caficultores colombianos, les dice si va a llover y a cuánto está el café, para que no pierdan el trabajo ni la plata abonando en un mal día.
 
-Hecha con Angular 21. Proyecto académico — Universidad de Manizales, Tecnología en Desarrollo de Software para Negocios Digitales.
+Hecha con Angular 21, proyecto académico de la Universidad de Manizales.
 
 ---
 
 ## ¿Para qué sirve?
 
-Cuando un campesino va a abonar su café y llueve, pierde el tiempo trabajado y la materia prima. CaféClima le dice:
+Cuando un campesino va a abonar su café y llueve, pierde el tiempo y el abono, con CaféClima puede revisar antes de salir al campo:
 
-- **¿Va a llover hoy?** — Probabilidad de lluvia en su municipio en tiempo real
-- **¿A cuánto está el café?** — Precio del café en COP por libra, actualizado desde la Bolsa de Nueva York
-
----
-
-## Stack
-
-- **Framework:** Angular 21 (standalone components)
-- **Lenguaje:** TypeScript
-- **APIs externas:**
-  - [OpenWeatherMap](https://openweathermap.org/api) — pronóstico del clima
-  - [ExchangeRate API](https://www.exchangerate-api.com/) — conversión USD → COP
-- **Estilos:** CSS puro (sin frameworks de UI)
+- si va a llover y qué tan probable es
+- a cuánto está el café en COP por libra, sacado directo de la Bolsa de Nueva York
 
 ---
 
-## Estructura del Proyecto
+## Con qué está hecho
+
+- Angular 21 con standalone components
+- TypeScript
+- CSS puro, sin frameworks de UI
+- [OpenWeatherMap API](https://openweathermap.org/api) para el clima
+- [ExchangeRate API](https://www.exchangerate-api.com/) para el precio del café en COP
+
+---
+
+## Estructura
 
 ```
 src/
 └── app/
+    ├── components/
+    │   ├── navbar/
+    │   └── footer/
     ├── pages/
-    │   └── home/           # Vista principal
+    │   └── home/
     ├── services/
-    │   └── data.ts         # Servicio HTTP (clima + precio café)
+    │   └── data.ts
     ├── app.config.ts
     ├── app.routes.ts
     └── app.ts
@@ -42,40 +44,21 @@ src/
 
 ---
 
-## Correr el Proyecto Localmente
+## Correrlo localmente
 
-**Requisitos:** Node.js 18+, Angular CLI 21
+Necesitas Node.js 18+ y Angular CLI.
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/pabloWIB/cafeclima.git
-cd cafeclima
-
-# Instalar dependencias
+git clone https://github.com/protonProjects/CafeClima.git
+cd CafeClima
 npm install
-
-# Servidor de desarrollo
 ng serve
 ```
 
-Abrir `http://localhost:4200` en el navegador.
-
----
-
-## Variables de Entorno
-
-Las API keys están en `src/app/services/data.ts`. Para producción, moverlas a `environment.ts`:
-
-| Variable | API | Gratis |
-|----------|-----|--------|
-| `apiKeyClima` | OpenWeatherMap | Sí (1000 llamadas/día) |
-| ExchangeRate | exchangerate-api.com | Sí (1500 llamadas/mes) |
+Abrir `http://localhost:4200`.
 
 ---
 
 ## Autores
 
-- **Gabriel Gómez**
-- **Pablo Nieto**
-
-Universidad de Manizales — 2026
+Gabriel Gómez y Pablo Nieto — Universidad de Manizales, 2026

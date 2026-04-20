@@ -1,6 +1,6 @@
 {
-  "name": "proyecto-posw",
-  "version": "0.0.0",
+  "name": "cafeclima",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,12 +11,12 @@
   "private": true,
   "packageManager": "npm@10.9.4",
   "dependencies": {
-    "@angular/common": "^21.2.0",
+    "@angular/common": "^21.2.9",
     "@angular/compiler": "^21.2.0",
-    "@angular/core": "^21.2.0",
+    "@angular/core": "^21.2.9",
     "@angular/forms": "^21.2.0",
-    "@angular/platform-browser": "^21.2.0",
-    "@angular/router": "^21.2.0",
+    "@angular/platform-browser": "^21.2.9",
+    "@angular/router": "^21.2.9",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
