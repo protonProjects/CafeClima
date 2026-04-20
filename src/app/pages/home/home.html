@@ -4,32 +4,34 @@
 
   <div class="cards-container">
 
-    <div class="card" *ngIf="clima">
-      <span class="card-badge" [class.badge-lluvia]="clima.probabilidad > 50" [class.badge-ok]="clima.probabilidad <= 50">
-        {{ clima.probabilidad > 50 ? 'Lluvia probable' : 'Cielo despejado' }}
-      </span>
-      <h3>Probabilidad de Lluvia — {{ clima.nombre }}</h3>
-      <span class="valor">{{ clima.probabilidad }}%</span>
-      <p style="text-transform: capitalize;">{{ clima.descripcion }}</p>
-      <hr>
-      <p><strong>{{ clima.mensaje }}</strong></p>
-    </div>
-
-    <div class="card" *ngIf="!clima && !errorClima">
-      <h3>Probabilidad de Lluvia</h3>
-      <span class="valor">...</span>
-      <p>Cargando datos del clima</p>
-    </div>
-
-    <div class="card card-error" *ngIf="errorClima">
-      <h3>Probabilidad de Lluvia</h3>
-      <p class="error-msg">{{ errorClima }}</p>
-    </div>
+    @if (clima()) {
+      <div class="card">
+        <span class="card-badge" [class.badge-lluvia]="clima().probabilidad > 50" [class.badge-ok]="clima().probabilidad <= 50">
+          {{ clima().probabilidad > 50 ? 'Lluvia probable' : 'Cielo despejado' }}
+        </span>
+        <h3>Probabilidad de Lluvia — {{ clima().nombre }}</h3>
+        <span class="valor">{{ clima().probabilidad }}%</span>
+        <p style="text-transform: capitalize;">{{ clima().descripcion }}</p>
+        <hr>
+        <p><strong>{{ clima().mensaje }}</strong></p>
+      </div>
+    } @else if (errorClima()) {
+      <div class="card card-error">
+        <h3>Probabilidad de Lluvia</h3>
+        <p class="error-msg">{{ errorClima() }}</p>
+      </div>
+    } @else {
+      <div class="card">
+        <h3>Probabilidad de Lluvia</h3>
+        <span class="valor">...</span>
+        <p>Cargando datos del clima</p>
+      </div>
+    }
 
     <div class="card">
       <span class="card-badge badge-ok">Precio hoy</span>
       <h3>Precio Café (Libra)</h3>
-      <span class="valor">{{ precioCafe }}</span>
+      <span class="valor">{{ precioCafe() }}</span>
       <p>Bolsa de Nueva York &rarr; COP</p>
     </div>
 
