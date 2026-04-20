@@ -1,0 +1,49 @@
+/* Este es el contenedor que envuelve todo */
+.main-container {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos de arriba hacia abajo */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center;     /* Centra horizontalmente */
+  min-height: 100vh;       /* Ocupa el 100% de la altura de la pantalla */
+  margin: 0;
+  background-color: #fcfaf8; /* Un color crema muy cafetero */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* El título principal */
+h1 {
+  margin-bottom: 40px;
+  color: #3e2723; /* Marrón oscuro */
+  text-align: center;
+}
+
+/* Contenedor específico para que las tarjetas salgan una al lado de la otra */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* Espacio entre la tarjeta de clima y café */
+  flex-wrap: wrap; /* Si la pantalla es pequeña (celular), se ponen una abajo de otra */
+}
+
+/* Estilo de las tarjetas */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  width: 300px;
+  text-align: center;
+  border-bottom: 8px solid #6f4e37; /* Detalle café en la base */
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de levante al pasar el mouse */
+}
+
+.valor {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 15px 0;
+  color: #2e7d32; /* Un verde oscuro para los números */
+}
