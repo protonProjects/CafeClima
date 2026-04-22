@@ -31,7 +31,7 @@
     <div class="card">
       <span class="card-badge badge-ok">Precio hoy</span>
       <h3>Precio Café (Libra)</h3>
-      <span class="valor">{{ precioCafe() }}</span>
+      <span class="valor">{{ precioCafe()?.formatted ?? 'Cargando...' }}</span>
       <p>Bolsa de Nueva York &rarr; COP</p>
     </div>
 

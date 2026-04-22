@@ -12,7 +12,7 @@ import { DataService } from '../../services/data';
 export class HomeComponent implements OnInit {
   clima = signal<any>(null);
   errorClima = signal<string>('');
-  precioCafe = signal<string>('Cargando...');
+  precioCafe = signal<any>(null);
   errorPrecio = signal<string>('');
 
   constructor(private dataService: DataService) {}
@@ -22,12 +22,20 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         const pronostico = res.list[0];
         const probabilidadLluvia = Math.round(pronostico.pop * 100);
+        const temperatura = pronostico.main.temp;
         this.clima.set({
           nombre: res.city.name,
           probabilidad: probabilidadLluvia,
           descripcion: pronostico.weather[0].description,
+          temperatura,
           mensaje: probabilidadLluvia > 50 ? '¡Pilas! Va a llover pronto.' : 'Cielo despejado por ahora.'
         });
+        this.dataService.guardarConsulta({
+          id_municipio: 1,
+          probabilidad_lluvia: probabilidadLluvia,
+          descripcion: pronostico.weather[0].description,
+          temperatura
+        }).subscribe({ error: (e) => console.error('Error guardando consulta:', e) });
       },
       error: (e) => {
         console.error('Error clima:', e);
@@ -36,10 +44,17 @@ export class HomeComponent implements OnInit {
     });
 
     this.dataService.getPrecioCafeEnCOP(2.40).subscribe({
-      next: (res) => this.precioCafe.set(res),
+      next: (res) => {
+        this.precioCafe.set(res);
+        this.dataService.guardarPrecio({
+          precio_usd: 2.40,
+          precio_cop: res.precioCop,
+          tasa_cambio: res.trmActual
+        }).subscribe({ error: (e) => console.error('Error guardando precio:', e) });
+      },
       error: (e) => {
         console.error('Error precio:', e);
-        this.precioCafe.set('Error');
+        this.precioCafe.set(null);
         this.errorPrecio.set('No se pudo cargar el precio.');
       }
     });
